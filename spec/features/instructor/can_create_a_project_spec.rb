@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "As an instructor" do
   it "I can create a new project" do
-    instructor = User.new(name: "Sal Espinosa", role: "instructor")
+    instructor = User.new(first_name: "Sal", last_name: "Espinosa", role: "instructor")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
 
     visit('/instructors/projects/new')
