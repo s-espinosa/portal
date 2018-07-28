@@ -2,6 +2,20 @@
 
 This is a work in progress.
 
+## Starting the Server
+
+This application uses [Turing Census](https://github.com/turingschool-projects/omniauth-census) for authentication. Census requires ssl. A certificate has been created in the `.ssl` directory of this project to allow you to serve the project locally. In order to use this certificate run the following command:
+
+```
+rails s -b 'ssl://localhost:3000?key=.ssl/localhost.key&cert=.ssl/localhost.crt'
+```
+
+You will likely get a notification saying that your connection is not private. If you are using Chrome it might look something like this:
+
+![Not Private](./images/not_private.png)
+
+Click on `Advanced` and then on the link that says `Proceed to localhost (unsafe)`.
+
 ## Roadmap
 
 * Create projects (complete - though user will likely need to be torn out and reworked)
