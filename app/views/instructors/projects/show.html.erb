@@ -1,1 +1,17 @@
 <h2><%= @project.name %></h2>
+
+<h3>Rubric</h3>
+
+<% if @project.rubrics %>
+  <%= render "rubric_table" %>
+<% else %>
+  <p>No rubric categories added. Use the form below.</p>
+<% end %>
+
+<%= form_for [:instructors, @project, @rubric] do |f| %>
+  <%= f.label :rubric_category %>
+  <%= f.collection_select(:rubric_category_id, RubricCategory.all, :id, :title) %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <%= f.submit "Add Rubric Category" %>
+<% end %>

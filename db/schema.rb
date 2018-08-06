@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_28_203609) do
+ActiveRecord::Schema.define(version: 2018_08_06_195843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "rubric_categories", force: :cascade do |t|
+    t.string "title"
+  end
+
+  create_table "rubrics", force: :cascade do |t|
+    t.bigint "rubric_category_id"
+    t.bigint "project_id"
+    t.string "description"
+    t.index ["project_id"], name: "index_rubrics_on_project_id"
+    t.index ["rubric_category_id"], name: "index_rubrics_on_rubric_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +46,6 @@ ActiveRecord::Schema.define(version: 2018_07_28_203609) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "rubrics", "projects"
+  add_foreign_key "rubrics", "rubric_categories"
 end

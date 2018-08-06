@@ -15,6 +15,7 @@ class Instructors::ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @rubric  = Rubric.new
   end
 
   private
