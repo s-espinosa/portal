@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Rubric Category</th>
+    <th>Description</th>
+  </tr>
+
+  <% @project.rubrics.each do |rubric| %>
+    <tr>
+      <td><%= rubric.rubric_category.title %></td>
+      <td><%= rubric.description %></td>
+    </tr>
+  <% end %>
+</table>
+
