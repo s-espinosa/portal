@@ -10,9 +10,16 @@
   </head>
 
   <body>
+    <% if current_instructor %>
+      <%= render "shared/instructor_nav" %>
+    <% else %>
+      <%= render "shared/student_nav" %>
+    <% end %>
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
