@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
 
   namespace :instructors do
-    resources :projects, only: [:new, :create, :show] do
+    resources :projects, only: [:new, :create, :show, :index] do
       resources :rubrics, only: [:create]
     end
     get '/dashboard', to: 'dashboard#show'

@@ -1,0 +1,81 @@
+$dark-gray: #3C4040;
+$light-gray: #7C8C8E;
+$turing-blue: #22C2D0;
+
+
+// SITE WIDE FORMATTING
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+  color: $turing-blue;
+}
+
+h3 {
+  -webkit-margin-before: 2em;
+  -webkit-margin-after: 0.25em;
+}
+
+// NAV
+nav {
+  background-color: $dark-gray;
+  color: $light-gray;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+
+    a {
+      text-decoration: none;
+      color: $light-gray;
+      padding: 20px;
+    }
+  }
+}
+
+// TABLES
+
+table {
+  border-collapse: collapse;
+
+  th {
+    background-color: $turing-blue;
+    color: white;
+    border: 1px solid $light-gray;
+    padding: 10px;
+    text-align: left;
+  }
+
+  td {
+    padding: 5px 10px;
+    text-align: left;
+    border: 1px solid $light-gray;
+  }
+}
+
+// FORMS
+form {
+  width: 50%;
+  color: $dark-gray;
+
+  label {
+    padding: 10px 0 0 0;
+  }
+
+  input {
+    width: 100%
+  }
+
+  textarea {
+    width: 100%
+  }
+
+  select {
+    width: 100%
+  }
+}

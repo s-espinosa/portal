@@ -1,4 +1,13 @@
 class Instructors::ProjectsController < ApplicationController
+  def show
+    @project = Project.find(params[:id])
+    @rubric  = Rubric.new
+  end
+
+  def index
+    @projects = Project.all
+  end
+
   def new
     @project = Project.new
   end
@@ -11,11 +20,6 @@ class Instructors::ProjectsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-    @project = Project.find(params[:id])
-    @rubric  = Rubric.new
   end
 
   private
