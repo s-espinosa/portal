@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_dashboard
+    return root_path unless current_user
     if current_user.instructor?
       instructors_dashboard_path
     else
