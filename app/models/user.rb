@@ -1,40 +1,45 @@
 class User < ApplicationRecord
+  belongs_to :turing_cohort
   enum role: [:student, :instructor]
 
-  def self.create_from_census(census_user)
+  def cohort
+    turing_cohort
+  end
+
+  def self.create_from_census(census_user, census_cohort)
     if User.find_by(census_id: census_user.id)
-      user = update_census_user(census_user)
+      user = update_census_user(census_user, census_cohort)
     else
-      user = create_census_user(census_user)
+      user = create_census_user(census_user, census_cohort)
     end
     user
   end
 
-  def self.update_census_user(census_user)
+  def self.update_census_user(census_user, census_cohort)
     user = User.find_by(census_id: census_user.id)
-    user = update_attributes(user, census_user)
+    user = update_attributes(user, census_user, census_cohort)
     user.save
     user
   end
 
-  def self.create_census_user(census_user)
+  def self.create_census_user(census_user, census_cohort)
     user = User.new
-    user = update_attributes(user, census_user)
+    user = update_attributes(user, census_user, census_cohort)
     user.save
     user
   end
 
-  def self.update_attributes(user, census_user)
-    user.cohort_name = census_user.cohort_name
-    user.email       = census_user.email
-    user.first_name  = census_user.first_name
-    user.last_name   = census_user.last_name
-    user.git_hub     = census_user.git_hub
-    user.census_id   = census_user.id
-    user.image_url   = census_user.image_url
-    user.role        = determine_role(census_user)
-    user.slack       = census_user.slack
-    user.twitter     = census_user.twitter
+  def self.update_attributes(user, census_user, census_cohort)
+    user.turing_cohort_id  = find_cohort(census_cohort)
+    user.email             = census_user.email
+    user.first_name        = census_user.first_name
+    user.last_name         = census_user.last_name
+    user.git_hub           = census_user.git_hub
+    user.census_id         = census_user.id
+    user.image_url         = census_user.image_url
+    user.role              = determine_role(census_user)
+    user.slack             = census_user.slack
+    user.twitter           = census_user.twitter
     user
   end
 
@@ -44,5 +49,14 @@ class User < ApplicationRecord
     else
       "student"
     end
+  end
+
+  def self.find_cohort(census_cohort)
+    cohort = TuringCohort.where(census_id: census_cohort["id"], name: census_cohort["name"])
+      .first_or_create do |c|
+        c.census_id  = census_cohort["id"]
+        c.name       = census_cohort["name"]
+      end
+    cohort.id
   end
 end
