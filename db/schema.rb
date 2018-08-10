@@ -15,13 +15,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_181026) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cohorts", force: :cascade do |t|
-    t.string "name"
-    t.string "census_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "projects", force: :cascade do |t|
     t.string "name"
   end
@@ -38,6 +31,13 @@ ActiveRecord::Schema.define(version: 2018_08_10_181026) do
     t.index ["rubric_category_id"], name: "index_rubrics_on_rubric_category_id"
   end
 
+  create_table "turing_cohorts", force: :cascade do |t|
+    t.string "name"
+    t.string "census_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "first_name"
@@ -50,11 +50,11 @@ ActiveRecord::Schema.define(version: 2018_08_10_181026) do
     t.string "twitter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "cohort_id"
-    t.index ["cohort_id"], name: "index_users_on_cohort_id"
+    t.bigint "turing_cohort_id"
+    t.index ["turing_cohort_id"], name: "index_users_on_turing_cohort_id"
   end
 
   add_foreign_key "rubrics", "projects"
   add_foreign_key "rubrics", "rubric_categories"
-  add_foreign_key "users", "cohorts"
+  add_foreign_key "users", "turing_cohorts"
 end
