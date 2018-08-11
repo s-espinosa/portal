@@ -26,10 +26,11 @@ Click on `Advanced` and then on the link that says `Proceed to localhost (unsafe
 * Allow instructors to create rubrics
 * Allow instructors
 * Allow instructors to create assignments
+* Create means to import a cohort of students from Census
 
 ### Next
 
-* Create means to import a cohort of students from Census
+* Refactor SessionsController to use CensusUser instead of using User directly.
 * Allow instructors to create scores for student submissions (numeric and notes)
 * Create means to import a list of cohorts from Census
 * Allow instructors to import a cohort of students from Census
