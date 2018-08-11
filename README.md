@@ -18,24 +18,31 @@ Click on `Advanced` and then on the link that says `Proceed to localhost (unsafe
 
 ## Roadmap
 
-* Create projects (complete - though user will likely need to be torn out and reworked)
+### Complete
+
+* Allow instructors to create projects
 * Allow users to log in using Census
-* Rework projects
-    * How are users stored? What all is stored about them? What do we look up on Census?
-    * Do we have a users table? Then do we have a Census User that is initialized based on some combination of what's in our users table and information from Census?
-* Create rubric categories
-    * Believe instructors should have ability to create a new rubric category.
-* Create rubrics
-    * Join between projects and rubric categories.
-    * Also have a field for description on this table.
-    * While many projects might share a rubric category, the particular description for that category may change from project to project.
-    * For example, both Black Thursday and Rails Engine might have a "Mechanics" section, but what is expected from students in each project might be very different. A student wouldn't be expected to use AR in Black Thursday, but they would in Rails Engine. We can designate these specific expectations in the description field on the rubrics table.
-* Create assignments table
-    * join between users and projects
-* Create a scores table
-    * join between users and rubrics.
-    * Each project should have multiple entries.
-    * Maybe these get created when an assignment gets created.
-    * Find all of the rubric entries related to a particular project and create a row on scores with that `rubric_id` and the `user_id` of the student being assigned the project.
-    * Also has a numeric score (1, 2, 3, 4)
-    * Also has notes.
+* Create rubric categories (through seeds file)
+* Allow instructors to create rubrics
+* Allow instructors
+* Allow instructors to create assignments
+* Create means to import a cohort of students from Census
+
+### Next
+
+* Refactor SessionsController to use CensusUser instead of using User directly.
+* Allow instructors to create scores for student submissions (numeric and notes)
+* Create means to import a list of cohorts from Census
+* Allow instructors to import a cohort of students from Census
+
+### Chores
+
+* Clean up formatting so that `login` doesn't appear so close to the nav.
+* Make display of `logout` button conditional on being logged in.
+* Make welcome screen more welcoming.
+
+## Notes
+
+* First going to create tool to import a cohort from within `rails c` because I haven't yet figured out how to pull a list of cohorts from Census.
+* 1808-BE Cohort id is 46
+
