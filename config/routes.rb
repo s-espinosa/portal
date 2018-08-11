@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :projects, only: [:new, :create, :show, :index] do
       resources :rubrics, only: [:create]
     end
+    resources :students, only: [:show] do
+      resources :assignments, only: [:create]
+    end
     get '/dashboard', to: 'dashboard#show'
   end
 
