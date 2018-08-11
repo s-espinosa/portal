@@ -1,1 +1,15 @@
 <h1>Instructor Dashboard</h1>
+
+<% if current_user.flock %>
+  <h2>Current Cohort: <%= current_user.flock.name %></h2>
+<% end %>
+
+<% if current_user.students %>
+  <h2>Students</h2>
+
+  <ul>
+    <% current_user.students.each do |student| %>
+      <li><%= student.full_name %></li>
+    <% end %>
+  </ul>
+<% end %>

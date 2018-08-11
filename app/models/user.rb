@@ -1,9 +1,17 @@
 class User < ApplicationRecord
-  belongs_to :turing_cohort
+  belongs_to :turing_cohort, optional: true
+  belongs_to :flock, foreign_key: 'flock_id', class_name: 'TuringCohort', optional: true
+  has_many :students, through: :flock
+  has_many :assignments
+  has_many :projects, through: :assignments
   enum role: [:student, :instructor]
 
   def cohort
     turing_cohort
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def self.create_from_census(census_user, census_cohort)
