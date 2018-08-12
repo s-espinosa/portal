@@ -31,7 +31,14 @@ Click on `Advanced` and then on the link that says `Proceed to localhost (unsafe
 ### Next
 
 * Refactor SessionsController to use CensusUser instead of using User directly.
+* Allow instructors to select the cohort they're teaching (flock) from dropdown and persist from their dashboard.
+* Create rake task to import students from a cohort.
 * Allow instructors to create scores for student submissions (numeric and notes)
+* Add authentication/authorization for Instructor namespaced routes.
+* Add ability for students to see current assignments.
+* Add ability for students to see scores.
+* Add ability for students to submit an assignment URL.
+* Add column for production URL for student submissions.
 * Create means to import a list of cohorts from Census
 * Allow instructors to import a cohort of students from Census
 
