@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :students, only: [:show] do
       resources :assignments, only: [:create]
     end
+    resources :users, only: [:update]
     get '/dashboard', to: 'dashboard#show'
   end
 

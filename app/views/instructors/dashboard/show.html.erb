@@ -2,6 +2,11 @@
 
 <% if current_user.flock %>
   <h2>Current Cohort: <%= current_user.flock.name %></h2>
+<% else %>
+  <%= form_for([:instructors, current_user]) do |f| %>
+    <%= f.collection_select(:flock_id, TuringCohort.all, :id, :name) %>
+    <%= f.submit "Assign Cohort" %>
+  <% end %>
 <% end %>
 
 <% if current_user.students %>
