@@ -17,6 +17,10 @@
 <% if current_user.students %>
   <h2>Students</h2>
 
+  <% if current_user.flock %>
+    <%= link_to "Update Students from #{current_user.flock.name}", instructors_students_path, method: "PATCH" %>
+  <% end %>
+
   <ul>
     <% current_user.students.each do |student| %>
       <li><%= student.full_name %></li>
