@@ -1,5 +1,4 @@
 # Portal
-
 This is a work in progress.
 
 ## Starting the Server

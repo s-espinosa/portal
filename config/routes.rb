@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     resources :students, only: [:show] do
       resources :assignments, only: [:create]
     end
+    resources :users, only: [:update]
     get '/dashboard', to: 'dashboard#show'
+
+    put   '/turing_cohorts', to: 'turing_cohorts#update'
+    patch '/turing_cohorts', to: 'turing_cohorts#update'
   end
 
   get '/dashboard', to: 'dashboard#show'

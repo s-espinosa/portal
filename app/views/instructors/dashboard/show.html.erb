@@ -1,8 +1,18 @@
 <h1>Instructor Dashboard</h1>
 
+<%= link_to "Import Cohorts", instructors_turing_cohorts_path, method: "PATCH" %>
+
 <% if current_user.flock %>
   <h2>Current Cohort: <%= current_user.flock.name %></h2>
 <% end %>
+
+<h2>Update the Cohort You're Teaching</h2>
+
+<%= form_for([:instructors, current_user]) do |f| %>
+  <%= f.collection_select(:flock_id, TuringCohort.order(:name), :id, :name) %>
+  <%= f.submit "Update Cohort" %>
+<% end %>
+
 
 <% if current_user.students %>
   <h2>Students</h2>
@@ -13,3 +23,4 @@
     <% end %>
   </ul>
 <% end %>
+
