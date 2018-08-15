@@ -10,7 +10,7 @@ describe "As an instructor" do
 
       visit instructors_dashboard_path
       select('1808-BE', from: 'user[flock_id]')
-      click_on "Assign Cohort"
+      click_on "Update Cohort"
 
       expect(page).to have_content("Successfully assigned cohort.")
       expect(page).to have_content("Current Cohort: 1808-BE")
