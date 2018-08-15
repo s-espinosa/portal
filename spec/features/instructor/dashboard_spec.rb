@@ -15,5 +15,15 @@ describe "As an instructor" do
       expect(page).to have_content("Successfully assigned cohort.")
       expect(page).to have_content("Current Cohort: 1808-BE")
     end
+
+    it "I can import a list of cohorts" do
+      instructor = User.create(first_name: "Sal", last_name: "Espinosa", role: "instructor")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
+
+      visit instructors_dashboard_path
+      click_on "Import Cohorts"
+
+      expect(page).to have_content("Successfully imported cohorts from Census.")
+    end
   end
 end

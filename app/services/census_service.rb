@@ -8,6 +8,15 @@ class CensusService
     JSON.parse(response.body)
   end
 
+  def self.get_cohorts
+    response = conn.get do |req|
+      req.url '/api/v1/cohorts'
+      req.params['access_token'] = token
+    end
+    JSON.parse(response.body)
+  end
+
+  private
   def self.conn
     Faraday.new(:url => 'https://login.turing.io/') do |faraday|
       faraday.request  :url_encoded

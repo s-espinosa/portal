@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:update]
     get '/dashboard', to: 'dashboard#show'
+
+    put   '/turing_cohorts', to: 'turing_cohorts#update'
+    patch '/turing_cohorts', to: 'turing_cohorts#update'
   end
 
   get '/dashboard', to: 'dashboard#show'
