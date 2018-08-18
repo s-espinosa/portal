@@ -17,3 +17,12 @@
   <%= f.text_area :description %><br>
   <%= f.submit "Add Rubric Category" %>
 <% end %>
+
+<h3>Ungraded Assignments</h3>
+
+<ul>
+  <% @project.ungraded_assignments.each do |assignment| %>
+    <li><%= link_to assignment.user.full_name, new_instructors_assignment_score_path(assignment) %></li>
+  <% end %>
+</ul>
+
