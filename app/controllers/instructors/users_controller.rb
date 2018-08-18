@@ -1,4 +1,4 @@
-class Instructors::UsersController < ApplicationController
+class Instructors::UsersController < Instructors::BaseController
   def update
     @user = current_user
     if @user.update(user_params)
