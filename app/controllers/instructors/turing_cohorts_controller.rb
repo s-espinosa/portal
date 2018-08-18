@@ -1,4 +1,4 @@
-class Instructors::TuringCohortsController < ApplicationController
+class Instructors::TuringCohortsController < Instructors::BaseController
   def update
     CensusCohort.update_all
     flash[:success] = "Successfully imported cohorts from Census."

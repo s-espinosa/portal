@@ -1,4 +1,4 @@
-class Instructors::StudentsController < ApplicationController
+class Instructors::StudentsController < Instructors::BaseController
   def show
     @student = current_user.students.find(params[:id])
     @assignment = Assignment.new

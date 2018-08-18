@@ -1,4 +1,4 @@
-class Instructors::RubricsController < ApplicationController
+class Instructors::RubricsController < Instructors::BaseController
   def create
     @project = Project.find(params[:project_id])
     @rubric = @project.rubrics.new(rubric_params)

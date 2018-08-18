@@ -1,4 +1,4 @@
-class Instructors::ProjectsController < ApplicationController
+class Instructors::ProjectsController < Instructors::BaseController
   def show
     @project = Project.find(params[:id])
     @rubric  = Rubric.new

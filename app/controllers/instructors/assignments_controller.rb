@@ -1,4 +1,4 @@
-class Instructors::AssignmentsController < ApplicationController
+class Instructors::AssignmentsController < Instructors::BaseController
   def create
     @student    = User.find(params[:student_id])
     @assignment = @student.assignments.new(assignment_params)

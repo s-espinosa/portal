@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <% if current_instructor %>
+    <% if current_instructor? %>
       <%= render "shared/instructor_nav" %>
     <% else %>
       <%= render "shared/student_nav" %>
