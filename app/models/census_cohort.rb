@@ -6,7 +6,7 @@ class CensusCohort
 
   def self.create_cohorts(cohorts)
     cohorts.map do |cohort|
-      TuringCohort.where(id: cohort[:id])
+      TuringCohort.where(census_id: cohort["id"])
         .first_or_create do |c|
           c.census_id = cohort["id"]
           c.name      = cohort["name"]
