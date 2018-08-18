@@ -1,0 +1,20 @@
+sudo: required
+dist: trusty
+language: ruby
+rvm: 2.4.1
+cache:
+- bundler
+before_script:
+- bundle exec rake db:create --all
+- bundle exec rake db:migrate
+script:
+- bundle exec rspec
+services:
+- postgresql
+deploy:
+  provider: heroku
+  app:
+    master: turing-portal
+  run: "rake db:migrate"
+  api_key:
+    secure: oeXu0lB8IyuqfsJpAHV4uA0udTzvUKQe2j9TKY539F9icXJMNZjZ6LjtiKj4ldCdYOv4ra+0LaJxCiOtjeiX0S5D5GvsIZqZM2qRxx5sdrOngaHVSVI3MPdEVwbQIzUmYeFSlpBtKeqjLf/rE3bM2FIP3VMlg3MnAJwBNc1jH1RDmSd9nAraGvVM0BVgSCWSyRUXmoatVpptLfzOVxorf7Yix8hizdTjOB6ETTWTKfJhkahRqJCgT2oHA5a1vWB+/sE66/R8gF1Wy5b5sodymQBeIHZkHTSbGMkW0REmUrHT6i9iU0fiREEtQwYhtOBMvLyxUl7TrnI6BpZrRXXjlmb0kEohngHCP43bk0E3OGDc+/pVA/LcFqrmPa/+g5jnWYAVADdp1ej1utxXak7dBnPsOD2j7zJLbTSqkjVTAKLNK5wamGsTj8yFdPlMqnuOPP2kvOLSW8qjwreWNhTvjg0E0xEIObj39P7mc0Vf6oJDdLYhCY+H4YZX/lVXBrZRCE2+KN88tkMgi3KBiyN2S69lPattUo3keoFy1LpI/DmwEnuHFVSwNxg0cYO042B7XT+ok2ySNkIX0Lf+E16ZRsBls7tfASC7ii2PNUf/WRxMAjn/9RmXZtolGGxtQ2rr/Y7WzuYuRFacBOysiRLmcow5upcAcpdbBOQ38OkUgnI=
