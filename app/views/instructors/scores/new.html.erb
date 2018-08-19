@@ -1,0 +1,12 @@
+<h2>Create New Scores</h2>
+
+<%= form_tag instructors_assignment_scores_path(@assignment) do %>
+  <% @assignment.project.rubrics.each do |rubric| %>
+    <h3><%= rubric.rubric_category.title %></h3>
+    <%= label_tag 'score' %>
+    <%= number_field_tag("assessment[#{rubric.id}][value]", nil, {min: 1, max: 4, step: 1}) %>
+    <%= label_tag 'note' %>
+    <%= text_field_tag("assessment[#{rubric.id}][note]") %>
+  <% end %>
+  <%= submit_tag "Save Scores" %>
+<% end %>

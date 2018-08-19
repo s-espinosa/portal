@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_11_023709) do
+ActiveRecord::Schema.define(version: 2018_08_18_210325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 2018_08_11_023709) do
     t.string "description"
     t.index ["project_id"], name: "index_rubrics_on_project_id"
     t.index ["rubric_category_id"], name: "index_rubrics_on_rubric_category_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.integer "value"
+    t.string "note"
+    t.bigint "assignment_id"
+    t.bigint "rubric_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assignment_id"], name: "index_scores_on_assignment_id"
+    t.index ["rubric_id"], name: "index_scores_on_rubric_id"
   end
 
   create_table "turing_cohorts", force: :cascade do |t|
@@ -70,5 +81,7 @@ ActiveRecord::Schema.define(version: 2018_08_11_023709) do
   add_foreign_key "assignments", "users"
   add_foreign_key "rubrics", "projects"
   add_foreign_key "rubrics", "rubric_categories"
+  add_foreign_key "scores", "assignments"
+  add_foreign_key "scores", "rubrics"
   add_foreign_key "users", "turing_cohorts"
 end

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Active Designer</title>
+  <link rel="stylesheet" href="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/css/bootstrap.min.css">
+  <script src="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/js/tether.min.js"></script>
+  <script src="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/js/jquery-3.1.1.js"></script>
+  <script src="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/js/bootstrap.min.js"></script>
+  <script src="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/js/jsPlumb-2.2.8.js"></script>
+  <script src="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/js/schema/jsPlumb.js"></script>
+  <script src="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/js/schema/edit-checker.js"></script>
+  <script src="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/js/schema/edit-table-name.js"></script>
+  <script src="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/js/schema/listeners.js"></script>
+  <script src="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/js/schema/mouse-controls.js"></script>
+  <script src="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/js/schema/add-column.js"></script>
+  <script src="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/js/schema/table-html.js"></script>
+  <link rel="stylesheet" href="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/css/main.css" >
+  <link rel="stylesheet" href="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/css/cards.css" >
+  <link rel="stylesheet" href="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/css/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <nav class="navbar bg-inverse">
+    <ul class="nav navbar-nav">
+      <li class="nav-item taco float-xs-left">
+        <a class="btn btn-default" data-toggle='popover' data-trigger='hover' data-content='Create a new table' href='#' >
+          <i class="fa fa-plus-square-o fa-3x" aria-hidden="true"></i>
+        </a>
+      </li>
+
+      <li class="nav-item float-xs-left scroller">
+        <div class="switch">
+          <div id='zoom-out' class='zoom-button'>
+            <i  class="fa fa-chevron-circle-left fa-2x" aria-hidden="true"></i>
+          </div>
+          <div class='slider-box'>
+          </div>
+          <div class="slider round">
+            <i class="fa fa-arrows-h" aria-hidden="true"></i>
+          </div>
+          <div id='zoom-in' class='zoom-button'>
+            <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </li>
+
+      <li class="nav-item float-xs-center">
+        <a class="btn btn-default navbar-brand" data-toggle='popover' data-trigger='hover' data-placement="left" data-content='Enter name of database' href='#' >
+          <h2>portal</h2>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="alert-bar">
+
+  </div>
+
+  <div id="bar" class="canvasBorder" >
+    <div id="foo" class="jsPlumbBoundary" >
+      
+      
+      
+        <div class='card' id='tbl-101' style="top:10px;left:10px;">
+          <div class='card-header'>
+            <i class="fa fa-arrows" aria-hidden="true"></i>
+            <h4 class='card-title table-title' data-toggle='popover' data-trigger='hover' data-content='Edit table name'>
+              assignments
+            </h4>
+            <div class='table-nav-buttons'>
+              <i class='fa fa-plus-square' data-toggle='popover' data-trigger='hover' data-content='Add column'></i>
+              <i class='fa fa-trash delete-table' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+            </div>
+          </div>
+          <div class='card-block'>
+            <ul class='list-group'>
+              <li class='list-group-item' id="tbl-101-id-column">
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' >id</span>
+                </div>
+              </li>
+              
+              <li class='list-group-item' id='col-101-101'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>link</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-101-102'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>datetime</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>created_at</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-101-103'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>datetime</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>updated_at</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              
+              <li class='list-group-item' id='ref-101-101'>
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title'>projects_id</span>
+                </div>
+                <i class='fa fa-trash delete-ref' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+              </li>
+              
+              <li class='list-group-item' id='ref-101-102'>
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title'>users_id</span>
+                </div>
+                <i class='fa fa-trash delete-ref' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+        
+          
+        
+      
+        <div class='card' id='tbl-102' style="top:10px;left:285px;">
+          <div class='card-header'>
+            <i class="fa fa-arrows" aria-hidden="true"></i>
+            <h4 class='card-title table-title' data-toggle='popover' data-trigger='hover' data-content='Edit table name'>
+              projects
+            </h4>
+            <div class='table-nav-buttons'>
+              <i class='fa fa-plus-square' data-toggle='popover' data-trigger='hover' data-content='Add column'></i>
+              <i class='fa fa-trash delete-table' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+            </div>
+          </div>
+          <div class='card-block'>
+            <ul class='list-group'>
+              <li class='list-group-item' id="tbl-102-id-column">
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' >id</span>
+                </div>
+              </li>
+              
+              <li class='list-group-item' id='col-102-101'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>name</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              
+            </ul>
+          </div>
+        </div>
+        
+          
+        
+      
+        <div class='card' id='tbl-103' style="top:10px;left:560px;">
+          <div class='card-header'>
+            <i class="fa fa-arrows" aria-hidden="true"></i>
+            <h4 class='card-title table-title' data-toggle='popover' data-trigger='hover' data-content='Edit table name'>
+              rubric_categories
+            </h4>
+            <div class='table-nav-buttons'>
+              <i class='fa fa-plus-square' data-toggle='popover' data-trigger='hover' data-content='Add column'></i>
+              <i class='fa fa-trash delete-table' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+            </div>
+          </div>
+          <div class='card-block'>
+            <ul class='list-group'>
+              <li class='list-group-item' id="tbl-103-id-column">
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' >id</span>
+                </div>
+              </li>
+              
+              <li class='list-group-item' id='col-103-101'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>title</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              
+            </ul>
+          </div>
+        </div>
+        
+          
+        
+      
+        <div class='card' id='tbl-104' style="top:10px;left:835px;">
+          <div class='card-header'>
+            <i class="fa fa-arrows" aria-hidden="true"></i>
+            <h4 class='card-title table-title' data-toggle='popover' data-trigger='hover' data-content='Edit table name'>
+              rubrics
+            </h4>
+            <div class='table-nav-buttons'>
+              <i class='fa fa-plus-square' data-toggle='popover' data-trigger='hover' data-content='Add column'></i>
+              <i class='fa fa-trash delete-table' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+            </div>
+          </div>
+          <div class='card-block'>
+            <ul class='list-group'>
+              <li class='list-group-item' id="tbl-104-id-column">
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' >id</span>
+                </div>
+              </li>
+              
+              <li class='list-group-item' id='col-104-101'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>description</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              
+              <li class='list-group-item' id='ref-104-103'>
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title'>projects_id</span>
+                </div>
+                <i class='fa fa-trash delete-ref' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+              </li>
+              
+              <li class='list-group-item' id='ref-104-104'>
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title'>rubric_categories_id</span>
+                </div>
+                <i class='fa fa-trash delete-ref' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+        
+          
+          
+        
+      
+        <div class='card' id='tbl-105' style="top:310px;left:10px;">
+          <div class='card-header'>
+            <i class="fa fa-arrows" aria-hidden="true"></i>
+            <h4 class='card-title table-title' data-toggle='popover' data-trigger='hover' data-content='Edit table name'>
+              scores
+            </h4>
+            <div class='table-nav-buttons'>
+              <i class='fa fa-plus-square' data-toggle='popover' data-trigger='hover' data-content='Add column'></i>
+              <i class='fa fa-trash delete-table' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+            </div>
+          </div>
+          <div class='card-block'>
+            <ul class='list-group'>
+              <li class='list-group-item' id="tbl-105-id-column">
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' >id</span>
+                </div>
+              </li>
+              
+              <li class='list-group-item' id='col-105-101'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>value</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-105-102'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>note</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-105-103'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>datetime</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>created_at</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-105-104'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>datetime</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>updated_at</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              
+              <li class='list-group-item' id='ref-105-105'>
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title'>assignments_id</span>
+                </div>
+                <i class='fa fa-trash delete-ref' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+              </li>
+              
+              <li class='list-group-item' id='ref-105-106'>
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title'>rubrics_id</span>
+                </div>
+                <i class='fa fa-trash delete-ref' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+        
+          
+        
+      
+        <div class='card' id='tbl-106' style="top:310px;left:285px;">
+          <div class='card-header'>
+            <i class="fa fa-arrows" aria-hidden="true"></i>
+            <h4 class='card-title table-title' data-toggle='popover' data-trigger='hover' data-content='Edit table name'>
+              turing_cohorts
+            </h4>
+            <div class='table-nav-buttons'>
+              <i class='fa fa-plus-square' data-toggle='popover' data-trigger='hover' data-content='Add column'></i>
+              <i class='fa fa-trash delete-table' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+            </div>
+          </div>
+          <div class='card-block'>
+            <ul class='list-group'>
+              <li class='list-group-item' id="tbl-106-id-column">
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' >id</span>
+                </div>
+              </li>
+              
+              <li class='list-group-item' id='col-106-101'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>name</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-106-102'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>datetime</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>created_at</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-106-103'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>datetime</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>updated_at</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              
+            </ul>
+          </div>
+        </div>
+        
+          
+        
+      
+        <div class='card' id='tbl-107' style="top:310px;left:560px;">
+          <div class='card-header'>
+            <i class="fa fa-arrows" aria-hidden="true"></i>
+            <h4 class='card-title table-title' data-toggle='popover' data-trigger='hover' data-content='Edit table name'>
+              users
+            </h4>
+            <div class='table-nav-buttons'>
+              <i class='fa fa-plus-square' data-toggle='popover' data-trigger='hover' data-content='Add column'></i>
+              <i class='fa fa-trash delete-table' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+            </div>
+          </div>
+          <div class='card-block'>
+            <ul class='list-group'>
+              <li class='list-group-item' id="tbl-107-id-column">
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' >id</span>
+                </div>
+              </li>
+              
+              <li class='list-group-item' id='col-107-101'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>email</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-107-102'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>first_name</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-107-103'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>last_name</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-107-104'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>git_hub</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-107-105'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>image_url</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-107-106'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>role</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-107-107'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>slack</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-107-108'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>string</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>twitter</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-107-109'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>datetime</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>created_at</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              <li class='list-group-item' id='col-107-110'>
+                <span class='tag tag-default float-xs-left type-span' data-toggle='popover' data-trigger='hover' data-content='Edit type'>datetime</span>
+                <div class='column-title-outer' >
+                  <span class='column-title' data-toggle='popover' data-trigger='hover' data-content='Edit column name'>updated_at</span>
+                </div>
+                <i class='fa fa-trash delete-column' data-toggle='popover' data-trigger='hover' data-content='Destroy column'></i>
+              </li>
+              
+              
+              <li class='list-group-item' id='ref-107-107'>
+                <span class='tag tag-default float-xs-left type-span'>integer</span>
+                <div class='column-title-outer' >
+                  <span class='column-title'>turing_cohorts_id</span>
+                </div>
+                <i class='fa fa-trash delete-ref' data-toggle='popover' data-trigger='hover' data-content='Destroy table'></i>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+        
+          
+        
+      
+    </div>
+  </div>
+  <script>
+    localStorage.setItem("schema",JSON.stringify({"tbl-101":{"name":"assignments","original_name":"assignments","status":{"original":true,"modified":false,"new":false,"deleted":false},"columns":{"col-101-101":{"name":"link","original_name":"link","type":"string","original_type":"string","id":"col-101-101","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-101-102":{"name":"created_at","original_name":"created_at","type":"datetime","original_type":"datetime","id":"col-101-102","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-101-103":{"name":"updated_at","original_name":"updated_at","type":"datetime","original_type":"datetime","id":"col-101-103","status":{"original":true,"new":false,"modified":false,"deleted":false}}},"references":{"ref-101-101":{"id":"ref-101-101","table_id":"tbl-101","foreign_table_name":"projects","foreign_table_id":"tbl-102","status":{"original":true,"new":false,"deleted":false}},"ref-101-102":{"id":"ref-101-102","table_id":"tbl-101","foreign_table_name":"users","foreign_table_id":"tbl-107","status":{"original":true,"new":false,"deleted":false}}},"id":"tbl-101"},"tbl-102":{"name":"projects","original_name":"projects","status":{"original":true,"modified":false,"new":false,"deleted":false},"columns":{"col-102-101":{"name":"name","original_name":"name","type":"string","original_type":"string","id":"col-102-101","status":{"original":true,"new":false,"modified":false,"deleted":false}}},"references":{},"id":"tbl-102"},"tbl-103":{"name":"rubric_categories","original_name":"rubric_categories","status":{"original":true,"modified":false,"new":false,"deleted":false},"columns":{"col-103-101":{"name":"title","original_name":"title","type":"string","original_type":"string","id":"col-103-101","status":{"original":true,"new":false,"modified":false,"deleted":false}}},"references":{},"id":"tbl-103"},"tbl-104":{"name":"rubrics","original_name":"rubrics","status":{"original":true,"modified":false,"new":false,"deleted":false},"columns":{"col-104-101":{"name":"description","original_name":"description","type":"string","original_type":"string","id":"col-104-101","status":{"original":true,"new":false,"modified":false,"deleted":false}}},"references":{"ref-104-103":{"id":"ref-104-103","table_id":"tbl-104","foreign_table_name":"projects","foreign_table_id":"tbl-102","status":{"original":true,"new":false,"deleted":false}},"ref-104-104":{"id":"ref-104-104","table_id":"tbl-104","foreign_table_name":"rubric_categories","foreign_table_id":"tbl-103","status":{"original":true,"new":false,"deleted":false}}},"id":"tbl-104"},"tbl-105":{"name":"scores","original_name":"scores","status":{"original":true,"modified":false,"new":false,"deleted":false},"columns":{"col-105-101":{"name":"value","original_name":"value","type":"integer","original_type":"integer","id":"col-105-101","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-105-102":{"name":"note","original_name":"note","type":"string","original_type":"string","id":"col-105-102","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-105-103":{"name":"created_at","original_name":"created_at","type":"datetime","original_type":"datetime","id":"col-105-103","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-105-104":{"name":"updated_at","original_name":"updated_at","type":"datetime","original_type":"datetime","id":"col-105-104","status":{"original":true,"new":false,"modified":false,"deleted":false}}},"references":{"ref-105-105":{"id":"ref-105-105","table_id":"tbl-105","foreign_table_name":"assignments","foreign_table_id":"tbl-101","status":{"original":true,"new":false,"deleted":false}},"ref-105-106":{"id":"ref-105-106","table_id":"tbl-105","foreign_table_name":"rubrics","foreign_table_id":"tbl-104","status":{"original":true,"new":false,"deleted":false}}},"id":"tbl-105"},"tbl-106":{"name":"turing_cohorts","original_name":"turing_cohorts","status":{"original":true,"modified":false,"new":false,"deleted":false},"columns":{"col-106-101":{"name":"name","original_name":"name","type":"string","original_type":"string","id":"col-106-101","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-106-102":{"name":"created_at","original_name":"created_at","type":"datetime","original_type":"datetime","id":"col-106-102","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-106-103":{"name":"updated_at","original_name":"updated_at","type":"datetime","original_type":"datetime","id":"col-106-103","status":{"original":true,"new":false,"modified":false,"deleted":false}}},"references":{},"id":"tbl-106"},"tbl-107":{"name":"users","original_name":"users","status":{"original":true,"modified":false,"new":false,"deleted":false},"columns":{"col-107-101":{"name":"email","original_name":"email","type":"string","original_type":"string","id":"col-107-101","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-107-102":{"name":"first_name","original_name":"first_name","type":"string","original_type":"string","id":"col-107-102","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-107-103":{"name":"last_name","original_name":"last_name","type":"string","original_type":"string","id":"col-107-103","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-107-104":{"name":"git_hub","original_name":"git_hub","type":"string","original_type":"string","id":"col-107-104","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-107-105":{"name":"image_url","original_name":"image_url","type":"string","original_type":"string","id":"col-107-105","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-107-106":{"name":"role","original_name":"role","type":"integer","original_type":"integer","id":"col-107-106","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-107-107":{"name":"slack","original_name":"slack","type":"string","original_type":"string","id":"col-107-107","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-107-108":{"name":"twitter","original_name":"twitter","type":"string","original_type":"string","id":"col-107-108","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-107-109":{"name":"created_at","original_name":"created_at","type":"datetime","original_type":"datetime","id":"col-107-109","status":{"original":true,"new":false,"modified":false,"deleted":false}},"col-107-110":{"name":"updated_at","original_name":"updated_at","type":"datetime","original_type":"datetime","id":"col-107-110","status":{"original":true,"new":false,"modified":false,"deleted":false}}},"references":{"ref-107-107":{"id":"ref-107-107","table_id":"tbl-107","foreign_table_name":"turing_cohorts","foreign_table_id":"tbl-106","status":{"original":true,"new":false,"deleted":false}}},"id":"tbl-107"}}))
+  </script>
+
+</body>
+
+<script src="/Users/sespinos/.rvm/gems/ruby-2.4.1/gems/active_designer-0.0.3/lib/active_designer/public/js/schema/main.js"></script>
+
+</html>
