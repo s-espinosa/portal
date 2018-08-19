@@ -5,7 +5,9 @@ class Project < ApplicationRecord
   has_many :users, through: :assignments
 
   def ungraded_assignments
-    assignments.joins('LEFT JOIN scores
-                      ON scores.assignment_id = assignments.id')
+    assignments
+      .joins('LEFT JOIN scores
+              ON scores.assignment_id = assignments.id')
+      .where('scores.assignment_id is NULL')
   end
 end
