@@ -1,5 +1,7 @@
 <h2>Projects</h2>
 
+<%= link_to "Create New Project", new_instructors_project_path %>
+
 <ul>
   <% @projects.each do |project| %>
     <li><%= link_to project.name, instructors_project_path(project) %></li>
