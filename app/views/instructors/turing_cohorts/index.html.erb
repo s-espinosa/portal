@@ -1,0 +1,7 @@
+<h2>Cohorts</h2>
+
+<ul>
+  <% @cohorts.each do |cohort| %>
+    <li><%= link_to cohort.name, instructors_turing_cohort_path(cohort) %></li>
+  <% end %>
+</ul>

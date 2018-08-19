@@ -1,0 +1,7 @@
+<h2><%= @cohort.name %></h2>
+
+<%= form_tag(instructors_turing_cohort_assignments_path(@cohort)) do  %>
+  <%= label_tag :project %>
+  <%= select_tag(:project_id, options_from_collection_for_select(Project.all, :id, :name)) %>
+  <%= submit_tag "Assign Project to Cohort" %>
+<% end %>
