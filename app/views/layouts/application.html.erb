@@ -16,7 +16,11 @@
       <%= render "shared/student_nav" %>
     <% end %>
     <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>"><%= value %></div>
+      <div class="alert alert-<%= key %>">
+        <p class="container">
+          <%= value %>
+        </p>
+      </div>
     <% end %>
     <div class="container">
       <%= yield %>
