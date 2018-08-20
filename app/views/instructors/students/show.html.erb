@@ -1,5 +1,7 @@
 <h2><%= @student.full_name %></h2>
 
+<%= link_to "Update Student from Census", "/instructors/students/#{@student.id}", method: "PUT" %>
+
 <h3>Assigned Projects</h3>
 
 <% if @student.projects %>

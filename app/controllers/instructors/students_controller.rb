@@ -10,4 +10,10 @@ class Instructors::StudentsController < Instructors::BaseController
     flash[:success] = "Successfully imported students from Census."
     redirect_to user_dashboard
   end
+
+  def individual_update
+    user = CensusUser.update_by_id(params[:id])
+    flash[:success] = "Successfully updated #{user.full_name} from Census."
+    redirect_to user_dashboard
+  end
 end
