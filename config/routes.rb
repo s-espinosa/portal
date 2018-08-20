@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
     put   '/turing_cohorts', to: 'turing_cohorts#update'
     patch '/turing_cohorts', to: 'turing_cohorts#update'
+    put   '/students/:id', to: 'students#individual_update'
+    patch '/students/:id', to: 'students#individual_update'
     put   '/students', to: 'students#update'
     patch '/students', to: 'students#update'
   end

@@ -1,4 +1,10 @@
 class CensusUser
+  def self.update_by_id(id)
+    user = User.find(id)
+    census_user = CensusService.find_by_census_id(user.census_id)
+    update_census_user(census_user)
+  end
+
   def self.create_or_update(census_user)
     if User.find_by(census_id: census_user['id'])
       user = update_census_user(census_user)
