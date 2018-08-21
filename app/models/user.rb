@@ -14,6 +14,18 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def average_scores
+    total = assignments.map do |assignment|
+      assignment.average_score
+    end.sum
+    count = assignments.count
+    if count != 0
+      total / count
+    else
+      0
+    end
+  end
+
   def self.create_from_census(census_user, census_cohort)
     if User.find_by(census_id: census_user.id)
       user = update_census_user(census_user, census_cohort)
