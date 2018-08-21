@@ -43,5 +43,36 @@ describe "As an instructor" do
       expect(page).to have_content("Successfully imported students from Census.")
     end
 
+    it 'I see a list of average students scores' do
+      cohort     = TuringCohort.create(name: "1808-BE")
+      instructor = User.create(first_name: "Sal",
+                               last_name: "Espinosa",
+                               role: "instructor",
+                               flock: cohort)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
+      student = User.create(first_name: "Student",
+                            last_name: "One",
+                            role: "student",
+                            turing_cohort: cohort)
+      project = Project.create(name: "Black Thursday")
+      rc_func = RubricCategory.create(title: "Functionality")
+      rc_mech = RubricCategory.create(title: "Mechanics")
+      functionality = project.rubrics.create(rubric_category: rc_func,
+                                            description: "Functional")
+      mechanics = project.rubrics.create(rubric_category: rc_mech,
+                                        description: "Mechanical")
+      assignment = Assignment.create(user: student,
+                                     project: project)
+      Score.create(assignment: assignment,
+                   rubric: functionality,
+                   value: 4)
+      Score.create(assignment: assignment,
+                   rubric: mechanics,
+                   value: 2)
+
+      visit instructors_dashboard_path
+
+      expect(page).to have_content("3.0")
+    end
   end
 end
