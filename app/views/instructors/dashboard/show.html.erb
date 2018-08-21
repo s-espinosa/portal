@@ -27,10 +27,11 @@
       <th>Average Score</th>
     </tr>
     <% @students.each do |student| %>
-      <td><%= student.full_name %></td>
+    <tr>
+      <td><%= link_to student.full_name, instructors_student_path(student) %></td>
       <td><%= student.average_scores %></td>
-    <% end %>
     </tr>
+    <% end %>
   </table>
 <% end %>
 
