@@ -28,7 +28,7 @@
     </tr>
     <% @students.each do |student| %>
     <tr>
-      <td><%= student.full_name %></td>
+      <td><%= link_to student.full_name, instructors_student_path(student) %></td>
       <td><%= student.average_scores %></td>
     </tr>
     <% end %>
