@@ -19,5 +19,7 @@
 <%= form_for(@assignment, url: instructors_student_assignments_path(@student, @assignment)) do |f| %>
   <%= f.label :project %><br>
   <%= f.collection_select(:project_id, Project.all, :id, :name) %>
+  <%= f.label :due_date %><br>
+  <%= f.date_field(:due_date, :order => [:month, :day, :year]) %>
   <%= f.submit "Assign Project" %>
 <% end %>

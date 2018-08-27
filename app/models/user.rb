@@ -15,11 +15,27 @@ class User < ApplicationRecord
   end
 
   def average_scores
-    total = assignments.map do |assignment|
+    scores = assignments.map do |assignment|
       assignment.average_score
-    end.sum
-    count = assignments.count
-    if count != 0
+    end.compact
+    total = scores.sum unless scores.empty?
+    count = assignments.graded.count
+    if count != 0 && total != nil
+      total / count
+    else
+      0
+    end
+  end
+
+  def trailing_average
+    week_ago  = Date.today - 7
+    assignments_from_last_week = assignments.where("due_date > ?", week_ago)
+    scores = assignments_from_last_week.map do |assignment|
+      assignment.average_score
+    end.compact
+    total = scores.sum unless scores.empty?
+    count = assignments_from_last_week.graded.count
+    if count != 0 && total != nil
       total / count
     else
       0

@@ -10,6 +10,7 @@ class Instructors::ScoresController < Instructors::BaseController
                               value: evaluation["value"],
                               note: evaluation["note"])
     end
+    assignment.update(graded: true)
     redirect_to instructors_project_path(assignment.project)
   end
 end
