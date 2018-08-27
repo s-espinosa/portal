@@ -21,15 +21,17 @@
     <%= link_to "Update Students from #{current_user.flock.name}", instructors_students_path, method: "PATCH" %>
   <% end %>
 
-  <table>
+  <table class='student-scores'>
     <tr>
       <th>Name</th>
-      <th>Average Score</th>
+      <th class='centered'>Average Score</th>
+      <th class='centered'>Average Last Week</th>
     </tr>
     <% @students.each do |student| %>
     <tr>
       <td><%= link_to student.full_name, instructors_student_path(student) %></td>
-      <td><%= student.average_scores %></td>
+      <td class='centered'><%= student.average_scores %></td>
+      <td class='centered'><%= student.trailing_average %></td>
     </tr>
     <% end %>
   </table>

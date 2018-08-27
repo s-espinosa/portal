@@ -8,7 +8,7 @@ class CreateUser < ActiveRecord::Migration[5.2]
       t.string :git_hub
       t.integer :census_id
       t.string :image_url
-      t.integer :role
+      t.integer :role, default: 0
       t.string :slack
       t.string :twitter
 

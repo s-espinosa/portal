@@ -16,6 +16,7 @@ gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-c
 gem 'figaro'
 gem 'faraday'
 gem 'active_designer'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

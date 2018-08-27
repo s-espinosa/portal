@@ -6,4 +6,8 @@ class Assignment < ApplicationRecord
   def average_score
     scores.average(:value)
   end
+
+  def self.graded
+    where(graded: true)
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_18_210325) do
+ActiveRecord::Schema.define(version: 2018_08_27_203226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2018_08_18_210325) do
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "due_date"
+    t.boolean "graded", default: false
     t.index ["project_id"], name: "index_assignments_on_project_id"
     t.index ["user_id"], name: "index_assignments_on_user_id"
   end
@@ -66,7 +68,7 @@ ActiveRecord::Schema.define(version: 2018_08_18_210325) do
     t.string "git_hub"
     t.integer "census_id"
     t.string "image_url"
-    t.integer "role"
+    t.integer "role", default: 0
     t.string "slack"
     t.string "twitter"
     t.datetime "created_at", null: false
