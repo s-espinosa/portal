@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :turing_cohorts, only: [:index, :show] do
       post '/assignments', to: 'turing_cohort_assignments#create'
     end
+    resources :rubrics, only: [:edit, :update, :destroy]
     get '/dashboard', to: 'dashboard#show'
 
     put   '/turing_cohorts', to: 'turing_cohorts#update'

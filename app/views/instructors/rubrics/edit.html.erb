@@ -1,0 +1,11 @@
+<h2>Edit Rubric Category</h2>
+
+<%= form_for [:instructors, @rubric] do |f| %>
+  <%= f.label :rubric_category %><br>
+  <%= f.collection_select(:rubric_category_id, RubricCategory.all, :id, :title) %><br>
+  <%= f.label :description %><br>
+  <%= f.text_area :description %><br>
+  <%= f.submit "Update Rubric Category" %>
+<% end %>
+
+
