@@ -2,7 +2,7 @@
 
 <h3>Rubric</h3>
 
-<% if @project.rubrics %>
+<% if @project.rubrics != [] %>
   <%= render "rubric_table" %>
 <% else %>
   <p>No rubric categories added. Use the form below.</p>
