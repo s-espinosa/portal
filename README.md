@@ -1,54 +1,26 @@
 # Portal
+
 This is a work in progress.
 
-## Starting the Server
+## Setup
 
-This application uses [Turing Census](https://github.com/turingschool-projects/omniauth-census) for authentication. Census requires ssl. A certificate has been created in the `.ssl` directory of this project to allow you to serve the project locally. In order to use this certificate run the following command:
+This project uses [Omniauth Census](https://github.com/turingschool-projects/omniauth-census).
 
-```
-rails s -b 'ssl://localhost:3000?key=.ssl/localhost.key&cert=.ssl/localhost.crt'
-```
+### Dev Environment
 
-You will likely get a notification saying that your connection is not private. If you are using Chrome it might look something like this:
+In order to run this application in your Dev environment, you will first need an invitation to Turing's Census app in staging. Contact Sal to request an invitation.
 
-![Not Private](./images/not_private.png)
+Once you have received your invitation and successfully logged in, you will need to register a new application. Use "http://localhost:3000/auth/census/callback" as your callback URL, and then copy the Application Id, and Secret that Census provides you.
 
-Click on `Advanced` and then on the link that says `Proceed to localhost (unsafe)`.
+You will need to set `CENSUS_CLIENT_ID`, `CENSUS_SECRET_ID`, and `CENSUS_BASE_URL` before you run the application locally. We have used [Figaro](https://github.com/laserlemon/figaro) to set these variables, and that gem is included in the Gemfile.
+
+A sample `application.yml` file has been included in this repository in `config/sample_application.yml`. Copy that file into a new `appliaction.yml` file and enter your credentials into the dev environment.
+
+### Production Environment
+
+The steps to set up the Production environment are the same as those described above for dev, except that the invitation needs to be to Turing's Census application. Contact Sal if you believe you need this functionality.
 
 ## Roadmap
 
-### Complete
-
-* Allow instructors to create projects
-* Allow users to log in using Census
-* Create rubric categories (through seeds file)
-* Allow instructors to create rubrics
-* Allow instructors
-* Allow instructors to create assignments
-* Create means to import a cohort of students from Census
-
-### Next
-
-* Refactor SessionsController to use CensusUser instead of using User directly.
-* Allow instructors to select the cohort they're teaching (flock) from dropdown and persist from their dashboard.
-* Create rake task to import students from a cohort.
-* Allow instructors to create scores for student submissions (numeric and notes)
-* Add authentication/authorization for Instructor namespaced routes.
-* Add ability for students to see current assignments.
-* Add ability for students to see scores.
-* Add ability for students to submit an assignment URL.
-* Add column for production URL for student submissions.
-* Create means to import a list of cohorts from Census
-* Allow instructors to import a cohort of students from Census
-
-### Chores
-
-* Clean up formatting so that `login` doesn't appear so close to the nav.
-* Make display of `logout` button conditional on being logged in.
-* Make welcome screen more welcoming.
-
-## Notes
-
-* First going to create tool to import a cohort from within `rails c` because I haven't yet figured out how to pull a list of cohorts from Census.
-* 1808-BE Cohort id is 46
+For a list of current issues, please see the [Waffle board](https://waffle.io/s-espinosa/portal).
 
