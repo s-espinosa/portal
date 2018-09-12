@@ -6,7 +6,7 @@ describe 'As an instructor' do
       cohort = TuringCohort.create(name: "1808-BE")
       instructor = User.create(first_name: "Instructor", last_name: "One", role: "instructor", flock: cohort)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
-      student = User.create(first_name: "Sal", last_name: "Espinsoa", role: "student", turing_cohort: cohort, census_id: 24)
+      student = User.create(first_name: "Sal", last_name: "Espinsoa", role: "student", turing_cohort: cohort, census_id: 56)
 
       visit(instructors_student_path(student))
       click_on "Update Student from Census"

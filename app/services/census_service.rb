@@ -29,7 +29,7 @@ class CensusService
 
   private
   def self.conn
-    Faraday.new(:url => 'https://login.turing.io/') do |faraday|
+    Faraday.new(:url => ENV["CENSUS_BASE_URL"]) do |faraday|
       faraday.request  :url_encoded
       faraday.adapter  Faraday.default_adapter
     end
