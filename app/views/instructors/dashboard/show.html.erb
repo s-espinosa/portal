@@ -1,7 +1,5 @@
 <h1>Instructor Dashboard</h1>
 
-<%= link_to "Import Cohorts", instructors_turing_cohorts_path, method: "PATCH" %>
-
 <% if current_user.flock %>
   <h2>Current Cohort: <%= current_user.flock.name %></h2>
 <% end %>
@@ -36,4 +34,3 @@
     <% end %>
   </table>
 <% end %>
-
