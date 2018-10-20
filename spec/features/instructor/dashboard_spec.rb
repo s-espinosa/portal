@@ -3,17 +3,17 @@ require 'rails_helper'
 describe "As an instructor" do
   describe "when I visit my dashboard" do
     it "I can assign myself a cohort" do
-      cohort_1 = TuringCohort.create(name: "1808-BE")
-      TuringCohort.create(name: "1806-BE")
-      instructor = User.create(role: "instructor", flock: cohort_1)
+      cohort_1 = CensusCohort.create_from_name("1407-BE")
+      CensusCohort.create_from_name("1409-BE")
+      instructor = User.create(role: "instructor", flock_id: cohort_1.id)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
 
       visit instructors_dashboard_path
-      select('1808-BE', from: 'user[flock_id]')
+      select('1409-BE', from: 'user[flock_id]')
       click_on "Update Cohort"
 
       expect(page).to have_content("Successfully assigned cohort.")
-      expect(page).to have_content("Current Cohort: 1808-BE")
+      expect(page).to have_content("Current Cohort: 1409-BE")
     end
 
     it "I can add a cohort" do
