@@ -3,9 +3,8 @@ require 'rails_helper'
 describe 'As an instructor' do
   describe 'when I visit the project index' do
     it 'I can grade the project of a student' do
-      instructor = User.create(first_name: "Sal", last_name: "Espinosa", role: "instructor")
-      student_1  = User.create(first_name: "student", last_name: "one", role: "student")
-      student_2  = User.create(first_name: "student", last_name: "two", role: "student")
+      instructor = User.create(role: "instructor")
+      CensusCohort.create_from_name("1409-BE")
 
       bt = Project.create(name: "Black Thursday")
 
@@ -17,8 +16,8 @@ describe 'As an instructor' do
       func = bt.rubrics.create(rubric_category: functionality)
       des  = bt.rubrics.create(rubric_category: design)
 
-      assignment_1 = student_1.assignments.create(project: bt)
-      student_2.assignments.create(project: bt)
+      assignment_1 = CensusUser.find(75).assignments.create(project: bt)
+      CensusUser.find(73).assignments.create(project: bt)
 
       assignment_1.scores.create(rubric: mech, value: 3, note: "Hey!")
       assignment_1.scores.create(rubric: func, value: 2, note: "Hey!")
@@ -27,7 +26,7 @@ describe 'As an instructor' do
 
       visit instructors_projects_path
       click_on "Black Thursday"
-      click_on "student two"
+      click_on "Laszlo Balogh"
 
       fill_in("assessment[#{mech.id}][value]", with: "3")
       fill_in("assessment[#{mech.id}][note]", with: "HEY!")
@@ -38,7 +37,7 @@ describe 'As an instructor' do
       click_on "Save Scores"
 
       expect(current_path).to eq(instructors_project_path(bt))
-      expect(student_2.assignments.last.scores.count).to eq(3)
+      expect(CensusUser.find(73).assignments.last.scores.count).to eq(3)
     end
   end
 end

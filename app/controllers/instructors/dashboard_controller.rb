@@ -1,5 +1,5 @@
 class Instructors::DashboardController < Instructors::BaseController
   def show
-    @students = current_user.students.order(:first_name)
+    @students = current_user.students if current_user.flock
   end
 end

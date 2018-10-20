@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :assignments, only: [] do
       resources :scores, only: [:new, :create]
     end
-    resources :turing_cohorts, only: [:index, :show] do
+    resources :turing_cohorts, only: [:index, :show, :create] do
       post '/assignments', to: 'turing_cohort_assignments#create'
     end
     resources :rubrics, only: [:edit, :update, :destroy]
@@ -24,8 +24,6 @@ Rails.application.routes.draw do
 
     put   '/turing_cohorts', to: 'turing_cohorts#update'
     patch '/turing_cohorts', to: 'turing_cohorts#update'
-    put   '/students/:id', to: 'students#individual_update'
-    patch '/students/:id', to: 'students#individual_update'
     put   '/students', to: 'students#update'
     patch '/students', to: 'students#update'
   end

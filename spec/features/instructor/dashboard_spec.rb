@@ -3,47 +3,43 @@ require 'rails_helper'
 describe "As an instructor" do
   describe "when I visit my dashboard" do
     it "I can assign myself a cohort" do
-      TuringCohort.create(name: "1808-BE")
-      TuringCohort.create(name: "1806-BE")
-      instructor = User.create(first_name: "Sal", last_name: "Espinosa", role: "instructor")
+      cohort_1 = CensusCohort.create_from_name("1407-BE")
+      CensusCohort.create_from_name("1409-BE")
+      instructor = User.create(role: "instructor", flock_id: cohort_1.id)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
 
       visit instructors_dashboard_path
-      select('1808-BE', from: 'user[flock_id]')
+      select('1409-BE', from: 'user[flock_id]')
       click_on "Update Cohort"
 
       expect(page).to have_content("Successfully assigned cohort.")
-      expect(page).to have_content("Current Cohort: 1808-BE")
+      expect(page).to have_content("Current Cohort: 1409-BE")
     end
 
-    it "I can import students from my cohort" do
-      cohort     = TuringCohort.create(name: "1808-BE",
-                                       census_id: 46)
+    it "I can add a cohort" do
+        instructor = User.new(role: "instructor")
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
 
-      instructor = User.create(first_name: "Sal",
-                               last_name: "Espinosa",
-                               role: "instructor",
-                               flock: cohort)
+        visit instructors_turing_cohorts_path
+        fill_in 'cohort_name', with: "1407-BE"
+        click_on "Add Cohort"
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
-
-      visit instructors_dashboard_path
-      click_on "Update Students from 1808-BE"
-
-      expect(page).to have_content("Successfully imported students from Census.")
+        expect(page).to have_content("Successfully added 1407-BE")
+        expect(page).to have_link("1407-BE")
     end
 
     it 'I see a list of average students scores' do
-      cohort     = TuringCohort.create(name: "1808-BE")
-      instructor = User.create(first_name: "Sal",
-                               last_name: "Espinosa",
-                               role: "instructor",
-                               flock: cohort)
+      cohort     = CensusCohort.create_from_name("1409-BE")
+      instructor = User.create(role: "instructor",
+                               flock: cohort.cohort)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
-      student = User.create(first_name: "Student",
-                            last_name: "One",
-                            role: "student",
-                            turing_cohort: cohort)
+      student = User.where(id: 75).first_or_create(id: 75, role: "student")
+      CensusUser.new({
+                      "first_name" => "Molly",
+                      "last_name" => "Brown",
+                      "id" => "75"
+                     })
+
       project = Project.create(name: "Black Thursday")
       rc_func = RubricCategory.create(title: "Functionality")
       rc_mech = RubricCategory.create(title: "Mechanics")
@@ -67,16 +63,17 @@ describe "As an instructor" do
     end
 
     it 'I see a list of average student scores for the past week' do
-      cohort     = TuringCohort.create(name: "1808-BE")
-      instructor = User.create(first_name: "Sal",
-                               last_name: "Espinosa",
-                               role: "instructor",
-                               flock: cohort)
+      cohort     = CensusCohort.create_from_name("1409-BE")
+      instructor = User.create(role: "instructor",
+                               flock: cohort.cohort)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
-      student = User.create(first_name: "Student",
-                            last_name: "One",
-                            role: "student",
-                            turing_cohort: cohort)
+      student = User.where(id: 75).first_or_create(id: 75, role: "student")
+      CensusUser.new({
+                      "first_name" => "Molly",
+                      "last_name" => "Brown",
+                      "id" => "75"
+                     })
+
       project = Project.create(name: "Black Thursday")
       rc_func = RubricCategory.create(title: "Functionality")
       rc_mech = RubricCategory.create(title: "Mechanics")

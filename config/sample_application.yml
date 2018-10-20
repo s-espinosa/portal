@@ -1,0 +1,14 @@
+development:
+  CENSUS_ID: # Copy and Paste the "Application Id" field from your Census Registered Applications
+  CENSUS_SECRET: # Copy and Paste the "Secret" field from your Census Registered Applications
+  CENSUS_BASE_URL: "https://login-staging.turing.io/"
+
+test:
+  CENSUS_ID: # Copy and Paste the "Application Id" field from your Census Registered Applications
+  CENSUS_SECRET: # Copy and Paste the "Secret" field from your Census Registered Applications
+  CENSUS_BASE_URL: "https://login-staging.turing.io/"
+
+production:
+  CENSUS_CLIENT_ID: YOUR_CENSUS_CLIENT_ID
+  CENSUS_SECRET_ID: YOUR_CENSUS_SECRET_ID
+  CENSUS_BASE_URL: "https://login.turing.io/"

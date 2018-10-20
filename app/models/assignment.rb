@@ -10,4 +10,8 @@ class Assignment < ApplicationRecord
   def self.graded
     where(graded: true)
   end
+
+  def census_user
+    CensusUser.find(user.id)
+  end
 end
