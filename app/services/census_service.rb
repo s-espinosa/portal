@@ -1,4 +1,12 @@
 class CensusService
+  def self.current_user(token)
+    response = conn.get do |req|
+      req.url '/api/v1/user_credentials'
+      req.params['access_token'] = token
+    end
+    JSON.parse(response.body)
+  end
+
   def self.get_cohort_students(census_cohort_id)
     response = conn.get do |req|
       req.url '/api/v1/users/by_cohort'

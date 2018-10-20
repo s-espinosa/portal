@@ -1,4 +1,10 @@
 class CensusUser
+  def self.create_from_census(request)
+    token       = request.env['omniauth.auth']["credentials"]["token"]
+    census_user = CensusService.current_user(token)
+    create(census_user)
+  end
+
   def self.find(id)
     census_info = CensusService.find_by_census_id(id)
     create(census_info)
