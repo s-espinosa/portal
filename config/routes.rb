@@ -24,8 +24,6 @@ Rails.application.routes.draw do
 
     put   '/turing_cohorts', to: 'turing_cohorts#update'
     patch '/turing_cohorts', to: 'turing_cohorts#update'
-    put   '/students', to: 'students#update'
-    patch '/students', to: 'students#update'
   end
 
   get '/dashboard', to: 'dashboard#show'

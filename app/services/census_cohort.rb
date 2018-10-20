@@ -29,7 +29,7 @@ class CensusCohort
   def students
     census_users = CensusService.get_cohort_students(self.id)
     census_users.map do |user|
-      CensusUser.new(user)
+      CensusUser.create(user)
     end
   end
 
@@ -62,9 +62,7 @@ class CensusCohort
     cohort = TuringCohort
       .where(id: formatted["id"])
       .first_or_create(formatted)
-    census_cohort = CensusCohort.new(cohort)
 
-    CensusFlock.create_or_update(cohort.id)
-    census_cohort
+    CensusCohort.new(cohort)
   end
 end

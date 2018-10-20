@@ -1,7 +1,19 @@
 class CensusUser
   def self.find(id)
     census_info = CensusService.find_by_census_id(id)
-    new(census_info)
+    create(census_info)
+  end
+
+  def self.create(student)
+    User.where(id: student["id"])
+      .first_or_create(id: student["id"])
+    CensusUser.new(student)
+  end
+
+  def self.create_all(students)
+    students.map do |student|
+      CensusUser.create(student)
+    end.sort_by(&:first_name)
   end
 
   attr_reader :first_name
