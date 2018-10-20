@@ -11,6 +11,10 @@ $error: #9E2A2B;
   margin: auto;
 }
 
+body {
+  margin-bottom: 60px;
+}
+
 a {
   text-decoration: none;
   color: $turing-blue;
@@ -35,10 +39,14 @@ h3 {
 }
 
 // LOGIN
+
 body.login-body {
   background-image: url('<%= image_path('background')%>');
-  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: $light-gray;
 }
 
 // NAV
@@ -89,7 +97,32 @@ form {
   color: $dark-gray;
 
   label {
-    padding: 10px 0 0 0;
+    padding: 4px 0 0 0;
+
+    &.form-heading {
+      font-size: 1.5em;
+      color: $turing-blue;
+    }
+  }
+
+  .checkbox-container {
+    display: flex;
+    flex-align: center;
+  }
+
+  input[type=checkbox] {
+    display: none;
+  }
+
+  input[type=checkbox] + label {
+    background: url('<%= image_path('checkbox-unchecked')%>') left top no-repeat;
+    display: block;
+    min-height: 25px;
+    padding-left: 40px;
+  }
+
+  input[type=checkbox]:checked + label {
+    background: url('<%= image_path('checkbox-checked')%>') left top no-repeat;
   }
 
   input {
