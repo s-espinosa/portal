@@ -1,9 +1,5 @@
 <h1>Instructor Dashboard</h1>
 
-<% if current_user.flock %>
-  <h2>Current Cohort: <%= current_user.flock.name %></h2>
-<% end %>
-
 <h2>Update the Cohort You're Teaching</h2>
 
 <%= form_for([:instructors, current_user]) do |f| %>
@@ -11,8 +7,9 @@
   <%= f.submit "Update Cohort" %>
 <% end %>
 
+<% if current_user.flock %>
+  <h2>Current Cohort: <%= current_user.flock.name %></h2>
 
-<% if current_user.students %>
   <h2>Students</h2>
 
   <table class='student-scores'>
@@ -30,4 +27,3 @@
     <% end %>
   </table>
 <% end %>
-
