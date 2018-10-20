@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As a student' do
   describe 'when I visit instructor pages' do
     it 'I see an error' do
-      user = User.create(first_name: 'George', last_name: 'Jefferson', role: 'student')
+      user = User.create(role: 'student')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       expect do

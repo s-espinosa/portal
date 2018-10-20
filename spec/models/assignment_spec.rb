@@ -2,9 +2,7 @@ require 'rails_helper'
 
 describe Assignment do
   it 'can calculate average scores' do
-    student = User.create(first_name: "Student",
-                          last_name: "One",
-                          role: "student")
+    student = User.create(role: "student")
     project = Project.create(name: "Black Thursday")
     rc_func = RubricCategory.create(title: "Functionality")
     rc_mech = RubricCategory.create(title: "Mechanics")

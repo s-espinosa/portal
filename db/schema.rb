@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_27_203226) do
+ActiveRecord::Schema.define(version: 2018_10_19_193447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,27 +56,16 @@ ActiveRecord::Schema.define(version: 2018_08_27_203226) do
 
   create_table "turing_cohorts", force: :cascade do |t|
     t.string "name"
-    t.string "census_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "git_hub"
-    t.integer "census_id"
-    t.string "image_url"
     t.integer "role", default: 0
-    t.string "slack"
-    t.string "twitter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "turing_cohort_id"
     t.bigint "flock_id"
     t.index ["flock_id"], name: "index_users_on_flock_id"
-    t.index ["turing_cohort_id"], name: "index_users_on_turing_cohort_id"
   end
 
   add_foreign_key "assignments", "projects"
@@ -85,5 +74,4 @@ ActiveRecord::Schema.define(version: 2018_08_27_203226) do
   add_foreign_key "rubrics", "rubric_categories"
   add_foreign_key "scores", "assignments"
   add_foreign_key "scores", "rubrics"
-  add_foreign_key "users", "turing_cohorts"
 end

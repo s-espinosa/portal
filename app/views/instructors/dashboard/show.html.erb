@@ -1,7 +1,5 @@
 <h1>Instructor Dashboard</h1>
 
-<%= link_to "Import Cohorts", instructors_turing_cohorts_path, method: "PATCH" %>
-
 <% if current_user.flock %>
   <h2>Current Cohort: <%= current_user.flock.name %></h2>
 <% end %>
@@ -16,10 +14,6 @@
 
 <% if current_user.students %>
   <h2>Students</h2>
-
-  <% if current_user.flock %>
-    <%= link_to "Update Students from #{current_user.flock.name}", instructors_students_path, method: "PATCH" %>
-  <% end %>
 
   <table class='student-scores'>
     <tr>

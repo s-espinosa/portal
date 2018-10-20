@@ -22,7 +22,7 @@
 
 <ul>
   <% @project.ungraded_assignments.each do |assignment| %>
-    <li><%= link_to assignment.user.full_name, new_instructors_assignment_score_path(assignment) %></li>
+    <li><%= link_to assignment.census_user.full_name, new_instructors_assignment_score_path(assignment) %></li>
   <% end %>
 </ul>
 

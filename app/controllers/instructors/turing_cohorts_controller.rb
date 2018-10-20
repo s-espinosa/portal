@@ -7,9 +7,9 @@ class Instructors::TuringCohortsController < Instructors::BaseController
     @cohort = TuringCohort.find(params[:id])
   end
 
-  def update
-    CensusCohort.update_all
-    flash[:success] = "Successfully imported cohorts from Census."
-    redirect_to user_dashboard
+  def create
+    cohort = CensusCohort.create_from_name(params[:cohort_name])
+    flash[:success] = "Successfully added #{cohort.name}"
+    redirect_to instructors_turing_cohorts_path
   end
 end

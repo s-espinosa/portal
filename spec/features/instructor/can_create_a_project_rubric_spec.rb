@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As an instructor' do
   describe 'when I visit a project show page' do
     it 'I can create a rubric for that project' do
-      instructor = User.new(first_name: "Sal", last_name: "Espinosa", role: "instructor")
+      instructor = User.new(role: "instructor")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
       project = Project.create(name: 'Black Thursday')
       RubricCategory.create(title: "Mechanics")
