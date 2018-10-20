@@ -3,49 +3,42 @@ require 'rails_helper'
 describe "As an instructor" do
   describe "when I visit my dashboard page" do
     it "I see a list of students" do
-      cohort     = TuringCohort.create(name: "1808-BE")
-      instructor = User.create(first_name: "Sal", last_name: "Espinosa", role: "instructor", flock: cohort)
-      User.create(first_name: "George", last_name: "Jefferson", role: "student", turing_cohort: cohort)
-      User.create(first_name: "Geneveve", last_name: "Jackson", role: "student", turing_cohort: cohort)
+      census_cohort = CensusCohort.create_from_name("1409-BE")
+      instructor = User.create(role: 'instructor', flock_id: census_cohort.id)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
 
       visit instructors_dashboard_path
 
-      expect(page).to have_content("George Jefferson")
-      expect(page).to have_content("Geneveve Jackson")
+      expect(page).to have_content("Molly Brown")
     end
   end
 
   describe 'when I visit a student show page' do
     it 'I see basic student information' do
-      cohort     = TuringCohort.create(name: "1808-BE")
-      instructor = User.create(first_name: "Sal", last_name: "Espinosa", role: "instructor", flock: cohort)
-      student_1  = User.create(first_name: "George", last_name: "Jefferson", role: "student", turing_cohort: cohort)
-      User.create(first_name: "Geneveve", last_name: "Jackson", role: "student", turing_cohort: cohort)
+      census_cohort = CensusCohort.create_from_name("1409-BE")
+      instructor = User.create(role: 'instructor', flock_id: census_cohort.id)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
 
-      visit instructors_student_path(student_1)
+      visit instructors_student_path(75)
 
-      expect(page).to have_content("George Jefferson")
-      expect(page).to_not have_content("Geneveve Jackson")
+      expect(page).to have_content("Molly Brown")
     end
 
     it 'I can assign a project to a student' do
-      cohort     = TuringCohort.create(name: "1808-BE")
-      student    = User.create(first_name: "George", last_name: "Jefferson", role: "student", turing_cohort: cohort)
-      instructor = User.create(first_name: "Sal", last_name: "Espinosa", role: "instructor", flock: cohort)
+      census_cohort = CensusCohort.create_from_name("1409-BE")
+      instructor = User.create(role: 'instructor', flock_id: census_cohort.id)
       Project.create(name: "Credit Check")
       Project.create(name: "Black Thursday")
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
 
-      visit instructors_student_path(student)
+      visit instructors_student_path(75)
       select('Black Thursday', from: 'assignment[project_id]')
       click_on("Assign Project")
 
-      expect(page).to have_content("Successfully assigned Black Thursday to George Jefferson")
+      expect(page).to have_content("Successfully assigned Black Thursday to Molly Brown")
     end
   end
 end

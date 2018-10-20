@@ -6,7 +6,8 @@ class CensusFlock
 
   def self.create_users(students)
     students.map do |student|
-      CensusUser.create_or_update(student)
+      User.where(id: student["id"])
+        .first_or_create(id: student["id"])
     end
   end
 end

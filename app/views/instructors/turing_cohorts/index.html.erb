@@ -1,5 +1,15 @@
 <h2>Cohorts</h2>
 
+<h3>Add a New Cohort</h3>
+
+<%= form_with url: instructors_turing_cohorts_path, local: true do |f| %>
+  <%= f.label :cohort_name %>
+  <%= f.text_field :cohort_name %>
+  <%= f.submit "Add Cohort" %>
+<% end %>
+
+<h3>Cohorts</h3>
+
 <ul>
   <% @cohorts.each do |cohort| %>
     <li><%= link_to cohort.name, instructors_turing_cohort_path(cohort) %></li>

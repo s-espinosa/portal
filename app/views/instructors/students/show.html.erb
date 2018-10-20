@@ -1,7 +1,5 @@
 <h2><%= @student.full_name %></h2>
 
-<%= link_to "Update Student from Census", "/instructors/students/#{@student.id}", method: "PUT" %>
-
 <h3>Assigned Projects</h3>
 
 <% if @student.projects %>
@@ -16,7 +14,7 @@
 
 <h3>Assign a New Project</h3>
 
-<%= form_for(@assignment, url: instructors_student_assignments_path(@student, @assignment)) do |f| %>
+<%= form_for(@assignment, url: instructors_student_assignments_path(@student.id, @assignment)) do |f| %>
   <%= f.label :project %><br>
   <%= f.collection_select(:project_id, Project.all, :id, :name) %>
   <%= f.label :due_date %><br>

@@ -2,9 +2,7 @@ require 'rails_helper'
 
 describe User do
   it 'can determine the average score of all its assignments' do
-    student = User.create(first_name: "Student",
-                          last_name: "One",
-                          role: "student")
+    student = User.create(role: "student")
     project_1 = Project.create(name: "Black Thursday")
     rc_func = RubricCategory.create(title: "Functionality")
     rc_mech = RubricCategory.create(title: "Mechanics")
@@ -42,9 +40,7 @@ describe User do
   end
 
   it 'can determine the average score of assignments for the past week' do
-    student = User.create(first_name: "Student",
-                          last_name: "One",
-                          role: "student")
+    student = User.create(role: "student")
     project = Project.create(name: "Black Thursday")
     rc_func = RubricCategory.create(title: "Functionality")
     rc_mech = RubricCategory.create(title: "Mechanics")
