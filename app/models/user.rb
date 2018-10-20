@@ -6,9 +6,7 @@ class User < ApplicationRecord
 
   def students
     census_students = CensusService.get_cohort_students(flock_id)
-    census_students.map do |student|
-      CensusUser.new(student)
-    end.sort_by(&:first_name)
+    CensusUser.create_all(census_students)
   end
 
   def average_scores
