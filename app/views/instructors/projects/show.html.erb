@@ -13,8 +13,8 @@
 <%= form_for [:instructors, @project, @rubric] do |f| %>
   <%= f.label :rubric_category %><br>
   <%= f.collection_select(:rubric_category_id, RubricCategory.all, :id, :title) %><br>
-  <%= f.label :description %><br>
-  <%= f.text_area :description %><br>
+  <%= f.label :description, "Description (markdown permitted)" %><br>
+  <%= f.text_area :description, rows: 15 %><br>
   <%= f.submit "Add Rubric Category" %>
 <% end %>
 

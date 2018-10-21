@@ -9,7 +9,7 @@
   <% @project.rubrics.each do |rubric| %>
     <tr>
       <td><%= rubric.rubric_category.title %></td>
-      <td><%= rubric.description %></td>
+      <td><%= markdown(rubric.description) %></td>
       <td><%= link_to "Edit", edit_instructors_rubric_path(rubric) %></td>
       <td><%= link_to "Delete", instructors_rubric_path(rubric), method: "DELETE" %></td>
     </tr>

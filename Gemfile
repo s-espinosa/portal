@@ -17,6 +17,7 @@ gem 'figaro'
 gem 'faraday'
 gem 'active_designer'
 gem 'jquery-rails'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
