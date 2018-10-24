@@ -1,5 +1,7 @@
 <%= form_for [:instructors, @project] do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
+  <%= f.label :project_category %>
+  <%= f.collection_select(:project_category_id, ProjectCategory.all, :id, :title) %><br>
   <%= f.submit %>
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_19_193447) do
+ActiveRecord::Schema.define(version: 2018_10_23_214507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +27,14 @@ ActiveRecord::Schema.define(version: 2018_10_19_193447) do
     t.index ["user_id"], name: "index_assignments_on_user_id"
   end
 
+  create_table "project_categories", force: :cascade do |t|
+    t.string "title"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
+    t.bigint "project_category_id"
+    t.index ["project_category_id"], name: "index_projects_on_project_category_id"
   end
 
   create_table "rubric_categories", force: :cascade do |t|
@@ -70,6 +76,7 @@ ActiveRecord::Schema.define(version: 2018_10_19_193447) do
 
   add_foreign_key "assignments", "projects"
   add_foreign_key "assignments", "users"
+  add_foreign_key "projects", "project_categories"
   add_foreign_key "rubrics", "projects"
   add_foreign_key "rubrics", "rubric_categories"
   add_foreign_key "scores", "assignments"
