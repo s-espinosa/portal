@@ -18,4 +18,6 @@ $( document ).ready(function() {
   $('.student-scores th:nth-child(1)').click(function() {sortStudentScores(1, 'asc')})
   $('.student-scores th:nth-child(2)').click(function() {sortStudentScores(2, 'desc')})
   $('.student-scores th:nth-child(3)').click(function() {sortStudentScores(3, 'desc')})
+
+  $('.hider').click(function() { $('.cohort-form').toggle('slow'); })
 });

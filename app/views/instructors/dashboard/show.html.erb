@@ -1,16 +1,12 @@
-<h1>Instructor Dashboard</h1>
-
-<h2>Update the Cohort You're Teaching</h2>
-
-<%= form_for([:instructors, current_user]) do |f| %>
-  <%= f.collection_select(:flock_id, TuringCohort.order(:name), :id, :name) %>
-  <%= f.submit "Update Cohort" %>
-<% end %>
-
 <% if current_user.flock %>
-  <h2>Current Cohort: <%= current_user.flock.name %></h2>
-
-  <h2>Students</h2>
+  <h2><%= current_user.flock.name %></h2>
+  <a href="#" class="hider">Change cohort</a>
+  <div class="cohort-form">
+    <%= form_for([:instructors, current_user]) do |f| %>
+      <%= f.collection_select(:flock_id, TuringCohort.order(:name), :id, :name) %>
+      <%= f.submit "Update Cohort" %>
+    <% end %>
+  </div>
 
   <table class='student-scores'>
     <tr>
@@ -19,11 +15,11 @@
       <th class='centered'>Average Last Week</th>
     </tr>
     <% @students.each do |student| %>
-    <tr>
-      <td><%= link_to student.full_name, instructors_student_path(student.id) %></td>
-      <td class='centered'><%= student.average_scores %></td>
-      <td class='centered'><%= student.trailing_average %></td>
-    </tr>
+      <tr>
+        <td><%= link_to student.full_name, instructors_student_path(student.id) %></td>
+        <td class='centered'><%= student.average_scores %></td>
+        <td class='centered'><%= student.trailing_average %></td>
+      </tr>
     <% end %>
   </table>
 <% end %>
