@@ -19,8 +19,5 @@ $( document ).ready(function() {
   $('.student-scores th:nth-child(2)').click(function() {sortStudentScores(2, 'desc')})
   $('.student-scores th:nth-child(3)').click(function() {sortStudentScores(3, 'desc')})
 
-  $('.hider').click(function() {
-    console.log("HIT")
-    $('.cohort-form').toggle('slow');
-  })
+  $('.hider').click(function() { $('.cohort-form').toggle('slow'); })
 });
