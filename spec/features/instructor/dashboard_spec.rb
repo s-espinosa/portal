@@ -13,19 +13,21 @@ describe "As an instructor" do
       click_on "Update Cohort"
 
       expect(page).to have_content("Successfully assigned cohort.")
-      expect(page).to have_content("Current Cohort: 1409-BE")
+      within("h2") do
+        expect(page).to have_content("1409-BE")
+      end
     end
 
     it "I can add a cohort" do
-        instructor = User.new(role: "instructor")
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
+      instructor = User.new(role: "instructor")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
 
-        visit instructors_turing_cohorts_path
-        fill_in 'cohort_name', with: "1407-BE"
-        click_on "Add Cohort"
+      visit instructors_turing_cohorts_path
+      fill_in 'cohort_name', with: "1407-BE"
+      click_on "Add Cohort"
 
-        expect(page).to have_content("Successfully added 1407-BE")
-        expect(page).to have_link("1407-BE")
+      expect(page).to have_content("Successfully added 1407-BE")
+      expect(page).to have_link("1407-BE")
     end
 
     it 'I see a list of average students scores' do
@@ -35,18 +37,18 @@ describe "As an instructor" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
       student = User.where(id: 75).first_or_create(id: 75, role: "student")
       CensusUser.new({
-                      "first_name" => "Molly",
-                      "last_name" => "Brown",
-                      "id" => "75"
-                     })
+        "first_name" => "Molly",
+        "last_name" => "Brown",
+        "id" => "75"
+      })
 
       project = Project.create(name: "Black Thursday")
       rc_func = RubricCategory.create(title: "Functionality")
       rc_mech = RubricCategory.create(title: "Mechanics")
       functionality = project.rubrics.create(rubric_category: rc_func,
-                                            description: "Functional")
+                                             description: "Functional")
       mechanics = project.rubrics.create(rubric_category: rc_mech,
-                                        description: "Mechanical")
+                                         description: "Mechanical")
       assignment = Assignment.create(user: student,
                                      project: project)
       Score.create(assignment: assignment,
@@ -69,18 +71,18 @@ describe "As an instructor" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(instructor)
       student = User.where(id: 75).first_or_create(id: 75, role: "student")
       CensusUser.new({
-                      "first_name" => "Molly",
-                      "last_name" => "Brown",
-                      "id" => "75"
-                     })
+        "first_name" => "Molly",
+        "last_name" => "Brown",
+        "id" => "75"
+      })
 
       project = Project.create(name: "Black Thursday")
       rc_func = RubricCategory.create(title: "Functionality")
       rc_mech = RubricCategory.create(title: "Mechanics")
       functionality = project.rubrics.create(rubric_category: rc_func,
-                                            description: "Functional")
+                                             description: "Functional")
       mechanics = project.rubrics.create(rubric_category: rc_mech,
-                                        description: "Mechanical")
+                                         description: "Mechanical")
       assignment = Assignment.create(user: student,
                                      project: project,
                                      due_date: Date.yesterday)
@@ -94,9 +96,9 @@ describe "As an instructor" do
 
       project_2 = Project.create(name: "HeadCount")
       functionality_2 = project_2.rubrics.create(rubric_category: rc_func,
-                                            description: "Functional")
+                                                 description: "Functional")
       mechanics_2 = project_2.rubrics.create(rubric_category: rc_mech,
-                                        description: "Mechanical")
+                                             description: "Mechanical")
       assignment = Assignment.create(user: student,
                                      project: project_2,
                                      due_date: Date.today - 14)
