@@ -1,4 +1,4 @@
-<h2>Create New Scores</h2>
+<h2><%= @assignment.project.name %> Scores for <%= @assignment.census_user.full_name %></h2>
 
 <%= form_tag instructors_assignment_scores_path(@assignment) do %>
   <% @assignment.project.rubrics.each do |rubric| %>
