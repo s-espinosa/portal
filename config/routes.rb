@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:update]
 
-    resources :assignments, only: [] do
+    resources :assignments, only: [:destroy] do
       resources :scores, only: [:new, :create]
     end
     resources :turing_cohorts, only: [:index, :show, :create] do

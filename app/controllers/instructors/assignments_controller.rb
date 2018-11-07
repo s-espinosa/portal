@@ -10,6 +10,11 @@ class Instructors::AssignmentsController < Instructors::BaseController
     redirect_to instructors_student_path(@student.id)
   end
 
+  def destroy
+    assignment = Assignment.destroy(params[:id])
+    redirect_to instructors_project_path(assignment.project_id)
+  end
+
   private
   def assignment_params
     params.require(:assignment).permit(:project_id)
